@@ -39,8 +39,6 @@ void unip()
 
 void starWars()
 {
-    printf(BG_BLACK);
-    printf(FG_L_MAGENTA);
     printf("%s                                                                                %s\n", BG_BLACK, RESET_C);
     printf("%s%s                      v@@@@@@@@@@@@@@@@@@uk@@@@@i@@@@@@@@@q                     %s\n", BG_BLACK, FG_L_MAGENTA, RESET_C);
     printf("%s%s                     @@@@@@@@@@@@@@@@@@@@v@@@@@@7O@@@@@@@@@@:                   %s\n", BG_BLACK, FG_L_MAGENTA, RESET_C);
@@ -120,63 +118,44 @@ void info()
 {
     printf(RESET_C);
     printf(FG_L_GREEN);
-    int tan, i;
 
-    char *lin1 = "\n________________________________________________________________________________\n";
-    char *lin2 = "\n                          UNIVERSIDADE PAULISTA - UNIP \n";
-    char *lin3 = "                          SUP TEC ANÁLISE DES SISTEMAS \n";
-    char *lin4 = "\n                         TURMA: DS1A34\tTURNO: MATUTINO \n";
-    char *lin5 = "\n                ALUNO: WILLIAM BENJAMIM M SAMPAIO / RA: D7534B-7 \n";
-    char *lin6 = "                **** Arte gerada com ASCII Generator v2.0.0 **** \n";
-    char *lin7 = "                     - http://ascgendotnet.jmsoftware.co.uk \n";
-    char *lin8 = "                        - http://ascgen2.sourceforge.net \n";
-    char *lin9 = "________________________________________________________________________________\n";
+    char buffer1[110], buffer2[110];
 
-    tan = strlen(lin1);
-    for (i = 0; i < tan; i++)
+    snprintf(
+        buffer1,
+        110,
+        "\n                         TURMA: %sDS1A34%s\tTURNO: %sMATUTINO%s                         \n",
+        FG_L_YELLOW,
+        FG_L_GREEN,
+        FG_L_YELLOW,
+        FG_L_GREEN);
+
+    snprintf(
+        buffer2,
+        111,
+        "\n                ALUNO: %sWILLIAM BENJAMIM M SAMPAIO%s / RA: %sD7534B-7%s                \n",
+        FG_L_YELLOW,
+        FG_L_GREEN,
+        FG_L_YELLOW,
+        FG_L_GREEN);
+
+    char *info[] = {
+        "\n________________________________________________________________________________\n",
+        "                          UNIVERSIDADE PAULISTA - UNIP                          \n",
+        "\n                          SUP TEC ANÁLISE DES SISTEMAS                          \n",
+        buffer1,
+        buffer2,
+        "                **** Arte gerada com ASCII Generator v2.0.0 ****                \n",
+        "                     - http://ascgendotnet.jmsoftware.co.uk                     \n",
+        "                        - http://ascgen2.sourceforge.net                        \n",
+        "________________________________________________________________________________\n"};
+
+    for (int i = 0; i < 9; i++)
     {
-        print_c(lin1[i], DELAY);
-    }
-    tan = strlen(lin2);
-    for (i = 0; i < tan; i++)
-    {
-        print_c(lin2[i], DELAY);
-    }
-    tan = strlen(lin3);
-    for (i = 0; i < tan; i++)
-    {
-        print_c(lin3[i], DELAY);
-    }
-    tan = strlen(lin4);
-    for (i = 0; i < tan; i++)
-    {
-        print_c(lin4[i], DELAY);
-    }
-    tan = strlen(lin5);
-    for (i = 0; i < tan; i++)
-    {
-        print_c(lin5[i], DELAY);
-    }
-    printf("\n");
-    tan = strlen(lin6);
-    for (i = 0; i < tan; i++)
-    {
-        print_c(lin6[i], DELAY);
-    }
-    tan = strlen(lin7);
-    for (i = 0; i < tan; i++)
-    {
-        print_c(lin7[i], DELAY);
-    }
-    tan = strlen(lin8);
-    for (i = 0; i < tan; i++)
-    {
-        print_c(lin8[i], DELAY);
-    }
-    tan = strlen(lin9);
-    for (i = 0; i < tan; i++)
-    {
-        print_c(lin9[i], DELAY);
+        for (int j = 0; j < strlen(info[i]); j++)
+        {
+            print_c(info[i][j], DELAY);
+        }
     }
 }
 
